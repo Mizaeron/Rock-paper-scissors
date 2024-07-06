@@ -16,20 +16,32 @@ function getComputerChoice() {
 
 }
 
-const computerChoice = getComputerChoice();
 
 function getHumanChoice() {
 
     let choice = prompt("Enter rock, paper or scissor");
+    let result = choice.toLowerCase();
 
-    if (choice == "rock" || choice == "paper" || choice == "scissor") {
-        return choice;
-    } else {
-        throw new Error("Value can only be rock, paper or scissor");
+    if (result == "rock" || result == "paper" || result == "scissor") {
+
+        return result;
     }
+        
+
 }
 
-const humanChoice = getHumanChoice();
+console.log(getHumanChoice());
 
-let humanScore = 0;
-let computerScore = 0;
+//let humanScore = 0;
+//let computerScore = 0;
+
+//function playRound(humanChoice, computerChoice) {
+
+//  }
+  
+ // const humanSelection = getHumanChoice();
+ // const computerSelection = getComputerChoice();
+  
+//  playRound(humanSelection, computerSelection); 
+  
+
