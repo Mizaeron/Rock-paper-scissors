@@ -18,5 +18,17 @@ function getComputerChoice() {
 
 const computerChoice = getComputerChoice();
 
-console.log(computerChoice);
+function getHumanChoice() {
 
+    let choice = prompt("Enter rock, paper or scissor");
+
+    if (choice == "rock" || choice == "paper" || choice == "scissor") {
+        return choice;
+    } else {
+        throw new Error("Value can only be rock, paper or scissor");
+    }
+}
+
+const humanChoice = getHumanChoice();
+
+console.log(humanChoice);
