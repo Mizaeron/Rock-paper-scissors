@@ -17,6 +17,7 @@ function getComputerChoice() {
 }
 
 
+
 function getHumanChoice() {
 
     let choice = prompt("Enter rock, paper or scissor");
@@ -30,14 +31,18 @@ function getHumanChoice() {
 
 }
 
-let humanScore = 0;
-let computerScore = 0;
+
+function playGame() {
+
+computerScore = 0;
+humanScore = 0;
 
 function playRound(humanChoice, computerChoice) {
 
+
     if (humanChoice == "paper" && computerChoice == "scissor") {
         computerScore++;
-        console.log("You lose! Scissor beats Paper");
+        console.log("You lose! Paper loses to Scissor");
     } else if (humanChoice == "paper" && computerChoice == "rock") {
         humanScore++;
         console.log("You win! Paper beats Rock");
@@ -62,12 +67,18 @@ function playRound(humanChoice, computerChoice) {
     }
     
 }
-  
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-  
-playRound(humanSelection, computerSelection); 
 
+playRound(getHumanChoice(), getComputerChoice());
+playRound(getHumanChoice(), getComputerChoice());
+playRound(getHumanChoice(), getComputerChoice());
+playRound(getHumanChoice(), getComputerChoice());
+playRound(getHumanChoice(), getComputerChoice());
+
+console.log(humanScore);
 console.log(computerScore);
-  
+
+}
+
+playGame();
+
 
