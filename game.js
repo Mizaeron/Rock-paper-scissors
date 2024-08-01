@@ -17,7 +17,7 @@ function getComputerChoice() {
 }
 
 
-
+/* 
 function getHumanChoice() {
 
     let choice = prompt("Enter rock, paper or scissor");
@@ -29,56 +29,86 @@ function getHumanChoice() {
     }
         
 
-}
+} */
+
+let computerScore = 0;
+let humanScore = 0;
 
 
-function playGame() {
-
-computerScore = 0;
-humanScore = 0;
 
 function playRound(humanChoice, computerChoice) {
 
-
     if (humanChoice == "paper" && computerChoice == "scissor") {
         computerScore++;
-        console.log("You lose! Paper loses to Scissor");
+        container.appendChild(document.createTextNode("You lose! Paper loses to Scissor"));
+        container.appendChild(document.createElement("br"));
     } else if (humanChoice == "paper" && computerChoice == "rock") {
         humanScore++;
-        console.log("You win! Paper beats Rock");
+        container.appendChild(document.createTextNode("You win! Paper beats Rock"));
+        container.appendChild(document.createElement("br"));
     } else if (humanChoice == "paper" && computerChoice == "paper") {
-        console.log("Draw!");
+        container.appendChild(document.createTextNode("Draw!"));
+        container.appendChild(document.createElement("br"));
     } else if (humanChoice == "scissor" && computerChoice == "scissor") {
-        console.log("Draw!");
+        container.appendChild(document.createTextNode("Draw!"));
+        container.appendChild(document.createElement("br"));
     } else if (humanChoice == "scissor" && computerChoice == "rock") {
         computerScore++;
-        console.log("You lose! Scissor loses to Rock");
+        container.appendChild(document.createTextNode("You lose! Scissor loses to Rock"));
+        container.appendChild(document.createElement("br"));
     } else if (humanChoice == "scissor" && computerChoice == "paper") {
         humanScore++;
-        console.log("You win! Scissor beats Paper");
+        container.appendChild(document.createTextNode("You win! Scissor beats Paper"));
+        container.appendChild(document.createElement("br"));
     } else if (humanChoice == "rock" && computerChoice == "scissor") {
         humanScore++;
-        console.log("You win! rock wins against scissor");
+        container.appendChild(document.createTextNode("You win! rock wins against scissor"));
+        container.appendChild(document.createElement("br"));
     } else if (humanChoice == "rock" && computerChoice == "rock") {
-        console.log("Draw!");
+        container.appendChild(document.createTextNode("Draw!"));
+        container.appendChild(document.createElement("br"));
     } else {
         computerScore++;
-        console.log("You lose! Rock loses to Paper");
+        container.appendChild(document.createTextNode("You lose! Rock loses to Paper"));
+        container.appendChild(document.createElement("br"));
     }
+
+document.querySelector(".humanScore").textContent = humanScore + " " + "Human Score";
+document.querySelector(".computerScore").textContent = computerScore + " " + "Computer Score";
+
+if (humanScore == 5) {
+    container.insertBefore(humanNode, container.children[0]);
+} else if (computerScore == 5) {
+    container.insertBefore(computerNode, container.children[0]);
+}
+}
+
+
+const humanNode = document.createElement("h1");
+humanNode.textContent = "YOU WIN!";
+const computerNode = document.createElement("h1");
+computerNode.textContent = "COMPUTER WINS!";
+
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissor = document.querySelector(".scissor");
+const container = document.querySelector(".results");
+
+rock.addEventListener("click", addRock);
+paper.addEventListener("click", addPaper);
+scissor.addEventListener("click", addScissor);
+
+function addRock() {
     
+    playRound("rock", getComputerChoice());
 }
 
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-
-console.log(humanScore);
-console.log(computerScore);
-
+function addPaper() {
+    
+    playRound("paper", getComputerChoice());
 }
 
-playGame();
-
-
+function addScissor() {
+    
+    playRound("scissor", getComputerChoice());
+}
